@@ -47,8 +47,11 @@ namespace DefaultNamespace
             LinkedList<GameObject> wordSlots = new LinkedList<GameObject>();
             foreach (var wordGameObject in wordGameObjects)
             {
+                // Has to be instantiate instead! This only makes one object and overrides it
+                // Or this is because the box that checks for the overlap is only on WordOperationManager? Idk...
                 GameObject wordSlot = new GameObject(wordGameObject.name + " wordSlot");
-                wordSlot.transform.position = wordGameObject.transform.position;
+                wordSlot.transform.position = wordGameObject.transform.localPosition;
+                wordSlot.transform.SetParent(canvas.transform, false);
                 wordSlots.AddLast(wordSlot);
             }
             
@@ -56,7 +59,6 @@ namespace DefaultNamespace
             WordOperationsManager wOM = baseWordGameObject.GetComponent<WordOperationsManager>();
             wOM.words = wordGameObjects;
             wOM.wordSlots = wordSlots;
-            wOM.Start();
         }
         
         private GameObject InitBaseWordGameObject()
@@ -65,6 +67,7 @@ namespace DefaultNamespace
             baseWordGameObject.transform.position = new Vector3(0f, 0f, 0f);
             baseWordGameObject.AddComponent<BoxCollider2D>();
             baseWordGameObject.AddComponent<Text>();
+            baseWordGameObject.AddComponent<CanvasGroup>();
             baseWordGameObject.AddComponent<Word>();
             Text baseWordText = baseWordGameObject.GetComponent<Text>();
             // Not setting any tex for this --/-> baseWordText.text = "text";

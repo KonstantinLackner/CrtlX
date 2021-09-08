@@ -1,39 +1,40 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace DefaultNamespace
 {
-    public class Word : MonoBehaviour
+    public class Word : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
-        public delegate void DragEndDelegate(Word wordObject);
-
-        public DragEndDelegate dragEndedCallback;
+        private Transform transform;
+        private CanvasGroup canvasGroup;
         
-        private bool isBeingDragged = false;
-        private Vector3 mouseDragStartPosition;
-        private Vector3 spriteDragStartPosition;
-
-        private void OnMouseDown()
+        private void Awake()
         {
-            isBeingDragged = true;
-            mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            spriteDragStartPosition = transform.localPosition;
+            transform = GetComponent<Transform>();
+            canvasGroup = GetComponent<CanvasGroup>();
         }
 
-        private void OnMouseDrag()
+        public void OnPointerDown(PointerEventData eventData)
         {
-            if (isBeingDragged)
-            {
-                transform.localPosition = spriteDragStartPosition +
-                                          (Camera.main.ScreenToWorldPoint(Input.mousePosition) -
-                                           mouseDragStartPosition);
-            }
+            Debug.Log("pointerDown");
         }
 
-        private void OnMouseUp()
+        public void OnBeginDrag(PointerEventData eventData)
         {
-            isBeingDragged = false;
-            dragEndedCallback(this);
+            canvasGroup.alpha = .6f;
+            canvasGroup.blocksRaycasts = false;
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            canvasGroup.alpha = 1f;
+            canvasGroup.blocksRaycasts = true;
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            transform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0);
         }
     }
 }
