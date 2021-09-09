@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="df858163-a20c-42a3-9a35-cbc388e5c270" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CrtlXCtrlV/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CrtlXCtrlV/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Word.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Word.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WordOperationsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WordOperationsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/wordSlotTest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/wordSlotTest.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +43,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="17972">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20228">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="17972" />
+      <option name="pid" value="20228" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -60,7 +63,9 @@
       <option name="presentableId" value="Default" />
       <updated>1631097223606</updated>
       <workItem from="1631097226584" duration="22000" />
-      <workItem from="1631100185609" duration="4162000" />
+      <workItem from="1631100185609" duration="4198000" />
+      <workItem from="1631126091749" duration="3952000" />
+      <workItem from="1631132435585" duration="7762000" />
     </task>
     <servers />
   </component>

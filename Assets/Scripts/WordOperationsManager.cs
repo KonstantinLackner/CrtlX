@@ -17,6 +17,7 @@ namespace DefaultNamespace
         {
             if (eventData.pointerDrag != null)
             {
+                Debug.Log(this.transform.position);
                 eventData.pointerDrag.GetComponent<Transform>().position = GetComponent<Transform>().position;
             }
         }

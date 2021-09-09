@@ -4,20 +4,16 @@ using UnityEngine.EventSystems;
 
 namespace DefaultNamespace
 {
-    public class Word : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+    public class Word : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
         private Transform transform;
         private CanvasGroup canvasGroup;
-        
+        public Canvas canvas { get; set; }
+
         private void Awake()
         {
             transform = GetComponent<Transform>();
             canvasGroup = GetComponent<CanvasGroup>();
-        }
-
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            Debug.Log("pointerDown");
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -34,7 +30,7 @@ namespace DefaultNamespace
 
         public void OnDrag(PointerEventData eventData)
         {
-            transform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0);
+            transform.position += new Vector3(eventData.delta.x, eventData.delta.y, 0) / canvas.scaleFactor;
         }
     }
 }

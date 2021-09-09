@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace DefaultNamespace
@@ -33,14 +32,19 @@ namespace DefaultNamespace
                 wordGameObject.transform.SetParent(canvas.transform, false);
                 
                 wordGameObject.GetComponent<Text>().text = word;
+                
+                wordGameObject.GetComponent<Word>().canvas = canvas;
 
+                wordGameObject.GetComponent<ContentSizeFitter>().horizontalFit =
+                    ContentSizeFitter.FitMode.PreferredSize;
+                
                 // Name the gameObject after the word it carries
                 wordGameObject.name = word;
 
                 // Add gameObject to the list later given to WorOperationsManager
                 wordGameObjects.AddLast(wordGameObject);
 
-                currentPoint += new Vector3(100f, 0, 0);
+                currentPoint += new Vector3(200f, 0, 0);
             }
 
             // Creates a wordSlot for every word in the sentence
@@ -54,9 +58,9 @@ namespace DefaultNamespace
                 wordSlot.transform.SetParent(canvas.transform, false);
                 wordSlots.AddLast(wordSlot);
             }
-            
-            baseWordGameObject.AddComponent<WordOperationsManager>();
-            WordOperationsManager wOM = baseWordGameObject.GetComponent<WordOperationsManager>();
+
+            gameObject.AddComponent<WordOperationsManager>();
+            WordOperationsManager wOM = gameObject.GetComponent<WordOperationsManager>();
             wOM.words = wordGameObjects;
             wOM.wordSlots = wordSlots;
         }
@@ -69,7 +73,9 @@ namespace DefaultNamespace
             baseWordGameObject.AddComponent<Text>();
             baseWordGameObject.AddComponent<CanvasGroup>();
             baseWordGameObject.AddComponent<Word>();
+            baseWordGameObject.AddComponent<ContentSizeFitter>();
             Text baseWordText = baseWordGameObject.GetComponent<Text>();
+            baseWordText.fontSize = 50;
             // Not setting any tex for this --/-> baseWordText.text = "text";
             baseWordText.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
             baseWordGameObject.transform.SetParent(canvas.transform, false);
