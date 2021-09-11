@@ -24,7 +24,7 @@ namespace DefaultNamespace
 
             float wordCount = words.Length;
             // Start -100 * wordCount/2 + 50f to the left of the centre so every word gets 100 and the middle word is centred
-            Vector3 currentPoint = new Vector3(wordCount / 2f * -100f + 50f , 0f, 0f);
+            Vector3 currentPoint = new Vector3(wordCount / 2f * -200f + 100f , 0f, 0f);
 
             LinkedList<GameObject> wordGameObjects = new LinkedList<GameObject>();
             LinkedList<Vector3> placementPositions = new LinkedList<Vector3>();
@@ -57,6 +57,8 @@ namespace DefaultNamespace
                 currentPoint += new Vector3(200f, 0, 0);
             }
 
+            GameObject.Destroy(baseWordGameObject);
+            
             wOM.words = wordGameObjects;
             wOM.placementPositions = placementPositions;
             Debug.Log("GameStateManager ");
