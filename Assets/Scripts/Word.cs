@@ -23,8 +23,12 @@ namespace DefaultNamespace
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            canvasGroup.alpha = .6f;
-            canvasGroup.blocksRaycasts = false;
+            // Has to be done for all words to prevent accidentally dropping onto the wron word
+            foreach (var word in GameStateManager.GetComponent<WordOperationsManager>().words)
+            {
+                word.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            }
+            canvasGroup.alpha = 0.6f;
             LinkedListNode<GameObject> targetNode = wordOperationsManager.words.Find(gameObject);
             wordOperationsManager.words.Remove(targetNode);
             printList(GameStateManager.GetComponent<WordOperationsManager>().words);
@@ -32,6 +36,10 @@ namespace DefaultNamespace
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            foreach (var word in GameStateManager.GetComponent<WordOperationsManager>().words)
+            {
+                word.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            }
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
             printList(GameStateManager.GetComponent<WordOperationsManager>().words);

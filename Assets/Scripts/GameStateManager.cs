@@ -10,6 +10,11 @@ namespace DefaultNamespace
         private Level currentLevel;
 
         public Canvas canvas;
+        private void Start()
+        {
+            InitLevel("Don't mind me testing oida heast funsn");
+            Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
+        }
 
         private void InitLevel(String sentence)
         {
@@ -76,10 +81,6 @@ namespace DefaultNamespace
             return baseWordGameObject;
         }
         
-        private void Start()
-        {
-            InitLevel("Don't mind me testing oida heast funsn");
-        }
 
         private void printList(LinkedList<GameObject> words)
         {
