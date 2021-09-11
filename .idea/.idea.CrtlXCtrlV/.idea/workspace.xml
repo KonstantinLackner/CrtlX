@@ -7,8 +7,6 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Word.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Word.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WordOperationsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WordOperationsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/wordSlotTest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/wordSlotTest.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,10 +41,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20228">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20312">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="20228" />
+      <option name="pid" value="20312" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -65,7 +63,9 @@
       <workItem from="1631097226584" duration="22000" />
       <workItem from="1631100185609" duration="4198000" />
       <workItem from="1631126091749" duration="3952000" />
-      <workItem from="1631132435585" duration="7762000" />
+      <workItem from="1631132435585" duration="7834000" />
+      <workItem from="1631289376862" duration="8619000" />
+      <workItem from="1631310029187" duration="5438000" />
     </task>
     <servers />
   </component>
@@ -77,5 +77,12 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
+        <watch expression="new System.Collections.Generic.ICollectionDebugView&lt;UnityEngine.GameObject&gt;(this.wordOperationsManager.wordSlots).Items[0].gameObject" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

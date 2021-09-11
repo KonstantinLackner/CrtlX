@@ -22,7 +22,10 @@ namespace DefaultNamespace
             Vector3 currentPoint = new Vector3(wordCount / 2f * -100f + 50f , 0f, 0f);
 
             LinkedList<GameObject> wordGameObjects = new LinkedList<GameObject>();
+            LinkedList<Vector3> placementPositions = new LinkedList<Vector3>();
 
+            WordOperationsManager wOM = GetComponent<WordOperationsManager>();
+            
             foreach (String word in words)
             {
                 // Problem rn is that the type of the words is GameObject not Word. No idea how to make sth. Type Word.
@@ -37,32 +40,22 @@ namespace DefaultNamespace
 
                 wordGameObject.GetComponent<ContentSizeFitter>().horizontalFit =
                     ContentSizeFitter.FitMode.PreferredSize;
-                
+
                 // Name the gameObject after the word it carries
                 wordGameObject.name = word;
 
                 // Add gameObject to the list later given to WorOperationsManager
                 wordGameObjects.AddLast(wordGameObject);
 
+                placementPositions.AddLast(currentPoint);
+                
                 currentPoint += new Vector3(200f, 0, 0);
             }
 
-            // Creates a wordSlot for every word in the sentence
-            LinkedList<GameObject> wordSlots = new LinkedList<GameObject>();
-            foreach (var wordGameObject in wordGameObjects)
-            {
-                // Has to be instantiate instead! This only makes one object and overrides it
-                // Or this is because the box that checks for the overlap is only on WordOperationManager? Idk...
-                GameObject wordSlot = new GameObject(wordGameObject.name + " wordSlot");
-                wordSlot.transform.position = wordGameObject.transform.localPosition;
-                wordSlot.transform.SetParent(canvas.transform, false);
-                wordSlots.AddLast(wordSlot);
-            }
-
-            gameObject.AddComponent<WordOperationsManager>();
-            WordOperationsManager wOM = gameObject.GetComponent<WordOperationsManager>();
             wOM.words = wordGameObjects;
-            wOM.wordSlots = wordSlots;
+            wOM.placementPositions = placementPositions;
+            Debug.Log("GameStateManager ");
+            printList(wOM.words);
         }
         
         private GameObject InitBaseWordGameObject()
@@ -86,6 +79,16 @@ namespace DefaultNamespace
         private void Start()
         {
             InitLevel("Don't mind me testing oida heast funsn");
+        }
+
+        private void printList(LinkedList<GameObject> words)
+        {
+            String print = "";
+            foreach (var word in words)
+            {
+                print += " " + word.name;
+            }
+            Debug.Log(print);
         }
     }
 }
