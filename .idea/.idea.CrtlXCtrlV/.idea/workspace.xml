@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="df858163-a20c-42a3-9a35-cbc388e5c270" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CrtlXCtrlV/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CrtlXCtrlV/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Word.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Word.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,10 +39,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20312">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="2180">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="20312" />
+      <option name="pid" value="2180" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -62,6 +64,7 @@
       <workItem from="1631132435585" duration="7834000" />
       <workItem from="1631289376862" duration="8619000" />
       <workItem from="1631310029187" duration="11511000" />
+      <workItem from="1631383122083" duration="3451000" />
     </task>
     <servers />
   </component>
@@ -78,43 +81,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/WordOperationsManager.cs</url>
-          <line>28</line>
-          <properties documentPath="C:\Laptop2\Uni\7.Semester\CrtlXCtrlV\Assets\Scripts\WordOperationsManager.cs" initialLine="28" containingFunctionPresentation="method 'SortList'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Word.cs</url>
+          <line>72</line>
+          <properties documentPath="C:\Laptop2\Uni\7.Semester\CrtlXCtrlV\Assets\Scripts\Word.cs" initialLine="72" containingFunctionPresentation="method 'OnPointerDown'">
             <startOffsets>
-              <option value="938" />
+              <option value="2761" />
             </startOffsets>
             <endOffsets>
-              <option value="981" />
+              <option value="2823" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/WordOperationsManager.cs</url>
-          <line>18</line>
-          <properties documentPath="C:\Laptop2\Uni\7.Semester\CrtlXCtrlV\Assets\Scripts\WordOperationsManager.cs" initialLine="18" containingFunctionPresentation="method 'OnDrop'">
-            <startOffsets>
-              <option value="624" />
-            </startOffsets>
-            <endOffsets>
-              <option value="658" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/WordOperationsManager.cs</url>
-          <line>62</line>
-          <properties documentPath="C:\Laptop2\Uni\7.Semester\CrtlXCtrlV\Assets\Scripts\WordOperationsManager.cs" initialLine="62" containingFunctionPresentation="method 'AlignWords'">
-            <startOffsets>
-              <option value="2341" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2414" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

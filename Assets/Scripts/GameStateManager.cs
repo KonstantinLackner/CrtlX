@@ -5,13 +5,21 @@ using UnityEngine.UI;
 
 namespace DefaultNamespace
 {
+    public enum OperationMode
+    {
+        Move,
+        Cut
+    }
     public class GameStateManager : MonoBehaviour
     {
         private Level currentLevel;
 
+        public OperationMode OperationMode;
+
         public Canvas canvas;
         private void Start()
         {
+            OperationMode = OperationMode.Cut;
             InitLevel("Don't mind me testing oida heast funsn");
             Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
         }
@@ -84,7 +92,6 @@ namespace DefaultNamespace
             return baseWordGameObject;
         }
         
-
         private void printList(LinkedList<GameObject> words)
         {
             String print = "";
