@@ -30,7 +30,7 @@ namespace DefaultNamespace
             LinkedList<Vector3> placementPositions = new LinkedList<Vector3>();
 
             WordOperationsManager wOM = GetComponent<WordOperationsManager>();
-            
+
             foreach (String word in words)
             {
                 // Problem rn is that the type of the words is GameObject not Word. No idea how to make sth. Type Word.
@@ -53,7 +53,7 @@ namespace DefaultNamespace
                 wordGameObjects.AddLast(wordGameObject);
 
                 placementPositions.AddLast(currentPoint);
-                
+
                 currentPoint += new Vector3(200f, 0, 0);
             }
 
@@ -78,6 +78,7 @@ namespace DefaultNamespace
             baseWordText.fontSize = 50;
             // Not setting any tex for this --/-> baseWordText.text = "text";
             baseWordText.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+            baseWordText.color = Color.black;
             baseWordGameObject.transform.SetParent(canvas.transform, false);
 
             return baseWordGameObject;
