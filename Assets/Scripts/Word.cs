@@ -11,7 +11,6 @@ namespace DefaultNamespace
         private CanvasGroup canvasGroup;
         private GameObject GameStateManagerGameObject;
         private GameStateManager GameStateManagerComponent;
-        private WordOperationsManager wordOperationsManager;
         public Canvas canvas { get; set; }
 
         private void Awake()
@@ -22,12 +21,11 @@ namespace DefaultNamespace
             transform = GetComponent<Transform>();
             canvasGroup = GetComponent<CanvasGroup>();
             
-            wordOperationsManager = GameStateManagerGameObject.GetComponent<WordOperationsManager>();
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (GameStateManagerComponent.OperationMode == OperationMode.Drag)
+            if (GameStateManagerComponent.operationMode == OperationMode.Drag)
             {
                 // Has to be done for all words to prevent accidentally dropping onto the wrong word
                 foreach (var word in GameStateManagerComponent.words)
@@ -72,8 +70,9 @@ namespace DefaultNamespace
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (GameStateManagerComponent.OperationMode == OperationMode.Cut)
+            if (GameStateManagerComponent.operationMode == OperationMode.Cut)
             {
+                GameStateManagerComponent.changeUIModes(OperationMode.Drag);
                 LinkedListNode<GameObject> targetNode = GameStateManagerComponent.words.Find(gameObject);
                 GameStateManagerComponent.words.Remove(targetNode);
                 printList(GameStateManagerComponent.words);

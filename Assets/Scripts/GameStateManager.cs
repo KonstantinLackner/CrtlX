@@ -14,31 +14,41 @@ namespace DefaultNamespace
     {
         private Level currentLevel;
 
-        public OperationMode OperationMode;
+        public OperationMode operationMode;
         public LinkedList<Vector3> placementPositions { get; set; }
         public LinkedList<GameObject> words { get; set; }
 
+        // References
         public Canvas canvas;
+        private Image modeIndicator;
+        public Sprite DRAGOPERATOR;
+        public Sprite CUTOPERATOR;
+        
         private void Awake()
         {
-            OperationMode = OperationMode.Drag;
-            InitLevel("Don't mind me testing oida heast funsn");
             Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
+            
+            operationMode = OperationMode.Drag;
+            
+            modeIndicator = GameObject.Find("ModeUI").GetComponent<Image>();
+            
+            InitLevel("Don't mind me testing oida heast funsn");
         }
 
         private void InitLevel(String sentence)
         {
-            String[] wordString = sentence.Split(' ');
+            String[] wordArray = sentence.Split(' ');
             
             GameObject baseWordGameObject = InitBaseWordGameObject();
 
-            float wordCount = wordString.Length;
+            float wordCount = wordArray.Length;
             // Start -100 * wordCount/2 + 50f to the left of the centre so every word gets 100 and the middle word is centred
             Vector3 currentPoint = new Vector3(wordCount / 2f * -200f + 100f , 0f, 0f);
 
             words = new LinkedList<GameObject>();
+            placementPositions = new LinkedList<Vector3>();
 
-            foreach (String word in wordString)
+            foreach (String word in wordArray)
             {
                 // Problem rn is that the type of the words is GameObject not Word. No idea how to make sth. Type Word.
                 GameObject wordGameObject = Instantiate(baseWordGameObject, currentPoint, Quaternion.identity);
@@ -121,6 +131,24 @@ namespace DefaultNamespace
             {
                 word.transform.localPosition = placementPositionsCopy[index];
                 index++;
+            }
+        }
+
+        public void changeUIModes(OperationMode mode)
+        {
+            switch (mode)
+            {
+                case OperationMode.Drag:
+                    modeIndicator.sprite = DRAGOPERATOR;
+                    modeIndicator.color = Color.black;
+                    operationMode = OperationMode.Drag;
+                    break;
+                
+                case OperationMode.Cut:
+                    modeIndicator.sprite = CUTOPERATOR;
+                    modeIndicator.color = Color.red;
+                    operationMode = OperationMode.Cut;
+                    break;
             }
         }
     }

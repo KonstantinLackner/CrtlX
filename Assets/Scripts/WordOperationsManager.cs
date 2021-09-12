@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 namespace DefaultNamespace
 {
     public class WordOperationsManager : MonoBehaviour, IDropHandler
-        // Just use the IdropDrag stuff for the WordOperations manager so words can be dropped everywhere in it. It can then decide what to do with them (where to snap them)
     {
         private float snapRange = 0.5f;
 
@@ -14,13 +13,10 @@ namespace DefaultNamespace
 
         private LinkedList<GameObject> words;
 
-        private LinkedList<Vector3> placementPositions;
-
         private void Awake()
         {
             gameStateManager = GetComponent<GameStateManager>();
             words = gameStateManager.words;
-            placementPositions = gameStateManager.placementPositions;
         }
 
         public void OnDrop(PointerEventData eventData)
