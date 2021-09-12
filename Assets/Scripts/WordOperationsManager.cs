@@ -8,18 +8,27 @@ namespace DefaultNamespace
     public class WordOperationsManager : MonoBehaviour, IDropHandler
         // Just use the IdropDrag stuff for the WordOperations manager so words can be dropped everywhere in it. It can then decide what to do with them (where to snap them)
     {
-        public LinkedList<GameObject> words { get; set; }
-
-        public LinkedList<Vector3> placementPositions { get; set; }
-
         private float snapRange = 0.5f;
+
+        private GameStateManager gameStateManager;
+
+        private LinkedList<GameObject> words;
+
+        private LinkedList<Vector3> placementPositions;
+
+        private void Awake()
+        {
+            gameStateManager = GetComponent<GameStateManager>();
+            words = gameStateManager.words;
+            placementPositions = gameStateManager.placementPositions;
+        }
 
         public void OnDrop(PointerEventData eventData)
         {
             if (eventData.pointerDrag != null)
             {
                 SortList(eventData.pointerDrag, eventData.position.x);
-                AlignWords();
+                gameStateManager.AlignWords();
             }
         }
 
@@ -55,18 +64,6 @@ namespace DefaultNamespace
             else
             {
                 words.AddAfter(slotToDropInto, new LinkedListNode<GameObject>(draggedObject));
-            }
-        }
-
-        private void AlignWords()
-        {
-            Vector3[] placementPositionsCopy = new Vector3[placementPositions.Count];
-            placementPositions.CopyTo(placementPositionsCopy, 0);
-            int index = 0;
-            foreach (var word in words)
-            {
-                word.transform.localPosition = placementPositionsCopy[index];
-                index++;
             }
         }
     }

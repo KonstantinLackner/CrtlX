@@ -10,46 +10,48 @@ namespace DefaultNamespace
         private Transform transform;
         private CanvasGroup canvasGroup;
         private GameObject GameStateManagerGameObject;
-        private GameStateManager GameStateManagerScript;
+        private GameStateManager GameStateManagerComponent;
         private WordOperationsManager wordOperationsManager;
         public Canvas canvas { get; set; }
 
         private void Awake()
         {
             GameStateManagerGameObject = GameObject.Find("Game State Manager");
-            GameStateManagerScript = GameStateManagerGameObject.GetComponent<GameStateManager>();
+            GameStateManagerComponent = GameStateManagerGameObject.GetComponent<GameStateManager>();
+            
             transform = GetComponent<Transform>();
             canvasGroup = GetComponent<CanvasGroup>();
+            
             wordOperationsManager = GameStateManagerGameObject.GetComponent<WordOperationsManager>();
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (GameStateManagerScript.OperationMode == OperationMode.Move)
+            if (GameStateManagerComponent.OperationMode == OperationMode.Drag)
             {
                 // Has to be done for all words to prevent accidentally dropping onto the wrong word
-                foreach (var word in GameStateManagerGameObject.GetComponent<WordOperationsManager>().words)
+                foreach (var word in GameStateManagerComponent.words)
                 {
                     word.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 }
 
                 canvasGroup.alpha = 0.6f;
-                LinkedListNode<GameObject> targetNode = wordOperationsManager.words.Find(gameObject);
-                wordOperationsManager.words.Remove(targetNode);
-                printList(GameStateManagerGameObject.GetComponent<WordOperationsManager>().words);
+                LinkedListNode<GameObject> targetNode = GameStateManagerComponent.words.Find(gameObject);
+                GameStateManagerComponent.words.Remove(targetNode);
+                printList(GameStateManagerComponent.words);
             }
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            foreach (var word in GameStateManagerGameObject.GetComponent<WordOperationsManager>().words)
+            foreach (var word in GameStateManagerComponent.words)
             {
                 word.GetComponent<CanvasGroup>().blocksRaycasts = true;
             }
 
             canvasGroup.alpha = 1f;
             canvasGroup.blocksRaycasts = true;
-            printList(GameStateManagerGameObject.GetComponent<WordOperationsManager>().words);
+            printList(GameStateManagerComponent.words);
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -70,12 +72,13 @@ namespace DefaultNamespace
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (GameStateManagerScript.OperationMode == OperationMode.Cut)
+            if (GameStateManagerComponent.OperationMode == OperationMode.Cut)
             {
-                LinkedListNode<GameObject> targetNode = wordOperationsManager.words.Find(gameObject);
-                wordOperationsManager.words.Remove(targetNode);
-                printList(GameStateManagerGameObject.GetComponent<WordOperationsManager>().words);
+                LinkedListNode<GameObject> targetNode = GameStateManagerComponent.words.Find(gameObject);
+                GameStateManagerComponent.words.Remove(targetNode);
+                printList(GameStateManagerComponent.words);
                 Destroy(gameObject);
+                GameStateManagerComponent.AlignWords();
             }
         }
     }

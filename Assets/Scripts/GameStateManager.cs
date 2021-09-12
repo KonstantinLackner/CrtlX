@@ -7,7 +7,7 @@ namespace DefaultNamespace
 {
     public enum OperationMode
     {
-        Move,
+        Drag,
         Cut
     }
     public class GameStateManager : MonoBehaviour
@@ -15,31 +15,30 @@ namespace DefaultNamespace
         private Level currentLevel;
 
         public OperationMode OperationMode;
+        public LinkedList<Vector3> placementPositions { get; set; }
+        public LinkedList<GameObject> words { get; set; }
 
         public Canvas canvas;
-        private void Start()
+        private void Awake()
         {
-            OperationMode = OperationMode.Cut;
+            OperationMode = OperationMode.Drag;
             InitLevel("Don't mind me testing oida heast funsn");
             Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
         }
 
         private void InitLevel(String sentence)
         {
-            String[] words = sentence.Split(' ');
+            String[] wordString = sentence.Split(' ');
             
             GameObject baseWordGameObject = InitBaseWordGameObject();
 
-            float wordCount = words.Length;
+            float wordCount = wordString.Length;
             // Start -100 * wordCount/2 + 50f to the left of the centre so every word gets 100 and the middle word is centred
             Vector3 currentPoint = new Vector3(wordCount / 2f * -200f + 100f , 0f, 0f);
 
-            LinkedList<GameObject> wordGameObjects = new LinkedList<GameObject>();
-            LinkedList<Vector3> placementPositions = new LinkedList<Vector3>();
+            words = new LinkedList<GameObject>();
 
-            WordOperationsManager wOM = GetComponent<WordOperationsManager>();
-
-            foreach (String word in words)
+            foreach (String word in wordString)
             {
                 // Problem rn is that the type of the words is GameObject not Word. No idea how to make sth. Type Word.
                 GameObject wordGameObject = Instantiate(baseWordGameObject, currentPoint, Quaternion.identity);
@@ -58,19 +57,16 @@ namespace DefaultNamespace
                 wordGameObject.name = word;
 
                 // Add gameObject to the list later given to WorOperationsManager
-                wordGameObjects.AddLast(wordGameObject);
+                words.AddLast(wordGameObject);
 
                 placementPositions.AddLast(currentPoint);
 
                 currentPoint += new Vector3(200f, 0, 0);
             }
 
-            GameObject.Destroy(baseWordGameObject);
-            
-            wOM.words = wordGameObjects;
-            wOM.placementPositions = placementPositions;
+            Destroy(baseWordGameObject);
             Debug.Log("GameStateManager ");
-            printList(wOM.words);
+            printList(words);
         }
         
         private GameObject InitBaseWordGameObject()
@@ -100,6 +96,32 @@ namespace DefaultNamespace
                 print += " " + word.name;
             }
             Debug.Log(print);
+        }
+        
+        public void AlignWords()
+        {
+            /*
+             * Start off by recounting words and adjusting placement positions
+             */
+            placementPositions = new LinkedList<Vector3>();
+            float wordCount = words.Count;
+            // Start -100 * wordCount/2 + 50f to the left of the centre so every word gets 100 and the middle word is centred
+            Vector3 currentPoint = new Vector3(wordCount / 2f * -200f + 100f , 0f, 0f);
+            for (int i = 0; i < wordCount; i++)
+            {
+                placementPositions.AddLast(currentPoint);
+
+                currentPoint += new Vector3(200f, 0, 0);
+            }
+            
+            Vector3[] placementPositionsCopy = new Vector3[placementPositions.Count];
+            placementPositions.CopyTo(placementPositionsCopy, 0);
+            int index = 0;
+            foreach (var word in words)
+            {
+                word.transform.localPosition = placementPositionsCopy[index];
+                index++;
+            }
         }
     }
 }
