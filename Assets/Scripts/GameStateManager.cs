@@ -8,7 +8,8 @@ namespace DefaultNamespace
     public enum OperationMode
     {
         Drag,
-        Cut
+        Cut,
+        ChangeEnding
     }
     public class GameStateManager : MonoBehaviour
     {
@@ -28,7 +29,7 @@ namespace DefaultNamespace
         {
             Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
             
-            operationMode = OperationMode.Drag;
+            operationMode = OperationMode.ChangeEnding;
             
             modeIndicator = GameObject.Find("ModeUI").GetComponent<Image>();
             
@@ -88,6 +89,7 @@ namespace DefaultNamespace
             baseWordGameObject.AddComponent<CanvasGroup>();
             baseWordGameObject.AddComponent<Word>();
             baseWordGameObject.AddComponent<ContentSizeFitter>();
+            baseWordGameObject.AddComponent<WordEndingChange>();
             Text baseWordText = baseWordGameObject.GetComponent<Text>();
             baseWordText.fontSize = 50;
             // Not setting any tex for this --/-> baseWordText.text = "text";

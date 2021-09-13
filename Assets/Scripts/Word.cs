@@ -54,7 +54,10 @@ namespace DefaultNamespace
 
         public void OnDrag(PointerEventData eventData)
         {
-            transform.position += new Vector3(eventData.delta.x, 0, 0) / canvas.scaleFactor;
+            if (GameStateManagerComponent.operationMode == OperationMode.Drag)
+            {
+                transform.position += new Vector3(eventData.delta.x, 0, 0) / canvas.scaleFactor;
+            }
         }
 
         private void printList(LinkedList<GameObject> words)
@@ -70,14 +73,20 @@ namespace DefaultNamespace
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (GameStateManagerComponent.operationMode == OperationMode.Cut)
+            switch (GameStateManagerComponent.operationMode)
             {
-                GameStateManagerComponent.changeUIModes(OperationMode.Drag);
-                LinkedListNode<GameObject> targetNode = GameStateManagerComponent.words.Find(gameObject);
-                GameStateManagerComponent.words.Remove(targetNode);
-                printList(GameStateManagerComponent.words);
-                Destroy(gameObject);
-                GameStateManagerComponent.AlignWords();
+                case OperationMode.Cut:
+                    GameStateManagerComponent.changeUIModes(OperationMode.Drag);
+                    LinkedListNode<GameObject> targetNode = GameStateManagerComponent.words.Find(gameObject);
+                    GameStateManagerComponent.words.Remove(targetNode);
+                    printList(GameStateManagerComponent.words);
+                    Destroy(gameObject);
+                    GameStateManagerComponent.AlignWords();
+                    break;
+                
+                case OperationMode.ChangeEnding:
+                    GetComponent<WordEndingChange>().changeEnding();
+                    break;
             }
         }
     }
