@@ -36,7 +36,7 @@ namespace DefaultNamespace
             
             modeIndicator = GameObject.Find("ModeUI").GetComponent<Image>();
             
-            InitLevel("Don't mind me testing oida heast funsn");
+            InitLevel("You walk over the burning bridge");
         }
 
         private void InitLevel(String sentence)
