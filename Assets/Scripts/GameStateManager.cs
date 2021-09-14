@@ -19,17 +19,20 @@ namespace DefaultNamespace
         public LinkedList<Vector3> placementPositions { get; set; }
         public LinkedList<GameObject> words { get; set; }
 
+        public GameObject wordEndingChangeWord { get; set; }
+
         // References
         public Canvas canvas;
         private Image modeIndicator;
         public Sprite DRAGOPERATOR;
         public Sprite CUTOPERATOR;
+        public Sprite WORDCHANGEOPERATOR;
         
         private void Awake()
         {
             Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
             
-            operationMode = OperationMode.ChangeEnding;
+            operationMode = OperationMode.Drag;
             
             modeIndicator = GameObject.Find("ModeUI").GetComponent<Image>();
             
@@ -136,7 +139,7 @@ namespace DefaultNamespace
             }
         }
 
-        public void changeUIModes(OperationMode mode)
+        public void changeOperationMode(OperationMode mode)
         {
             switch (mode)
             {
@@ -150,6 +153,12 @@ namespace DefaultNamespace
                     modeIndicator.sprite = CUTOPERATOR;
                     modeIndicator.color = Color.red;
                     operationMode = OperationMode.Cut;
+                    break;
+                
+                case OperationMode.ChangeEnding:
+                    modeIndicator.sprite = WORDCHANGEOPERATOR;
+                    modeIndicator.color = Color.red;
+                    operationMode = OperationMode.ChangeEnding;
                     break;
             }
         }

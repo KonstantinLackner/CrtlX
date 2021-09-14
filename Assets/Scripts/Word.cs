@@ -76,7 +76,7 @@ namespace DefaultNamespace
             switch (GameStateManagerComponent.operationMode)
             {
                 case OperationMode.Cut:
-                    GameStateManagerComponent.changeUIModes(OperationMode.Drag);
+                    GameStateManagerComponent.changeOperationMode(OperationMode.Drag);
                     LinkedListNode<GameObject> targetNode = GameStateManagerComponent.words.Find(gameObject);
                     GameStateManagerComponent.words.Remove(targetNode);
                     printList(GameStateManagerComponent.words);
@@ -85,7 +85,22 @@ namespace DefaultNamespace
                     break;
                 
                 case OperationMode.ChangeEnding:
-                    GetComponent<WordEndingChange>().changeEnding();
+                    // No word has been set to operate on - set this
+                    if (GameStateManagerComponent.wordEndingChangeWord == null)
+                    {
+                        GameStateManagerComponent.wordEndingChangeWord = gameObject;
+                    }
+                    // This is the word operated on - change its ending
+                    if (GameStateManagerComponent.wordEndingChangeWord == gameObject)
+                    {
+                        GetComponent<WordEndingChange>().changeEnding();
+                    }
+                    // Another word is operated on and this is finished - switch modes to drag
+                    else
+                    {
+                        GameStateManagerComponent.changeOperationMode(OperationMode.Drag);
+                    }
+
                     break;
             }
         }

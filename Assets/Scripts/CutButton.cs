@@ -18,7 +18,7 @@ public class CutButton : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         // delete this but change something about the hud
-        gameStateManager.changeUIModes(OperationMode.Cut);
+        gameStateManager.changeOperationMode(OperationMode.Cut);
         Destroy(gameObject);
     }
 }

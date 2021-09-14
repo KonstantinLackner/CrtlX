@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df858163-a20c-42a3-9a35-cbc388e5c270" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WordEndingChange.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WordEndingChange.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WordEndingChangeButton.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/WordEndingChangeButton.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/changeWordEnding.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites/nextLevel.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CrtlXCtrlV/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CrtlXCtrlV/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CutButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CutButton.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Word.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Word.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/dragOperator.psd" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/dragOperator.psd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WordEndingChangeButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WordEndingChangeButton.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +73,7 @@
       <workItem from="1631310029187" duration="11511000" />
       <workItem from="1631383122083" duration="4093000" />
       <workItem from="1631447311950" duration="7286000" />
-      <workItem from="1631531666052" duration="5628000" />
+      <workItem from="1631531666052" duration="6950000" />
     </task>
     <servers />
   </component>
@@ -105,6 +100,23 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/WordOperationsManager.cs</url>
+          <line>23</line>
+          <properties documentPath="C:\Laptop2\Uni\7.Semester\CrtlXCtrlV\Assets\Scripts\WordOperationsManager.cs" initialLine="23" containingFunctionPresentation="method 'OnDrop'">
+            <startOffsets>
+              <option value="580" />
+            </startOffsets>
+            <endOffsets>
+              <option value="614" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
         <watch expression="new System.Collections.Generic.ICollectionDebugView&lt;UnityEngine.GameObject&gt;(this.wordOperationsManager.wordSlots).Items[0].gameObject" />
