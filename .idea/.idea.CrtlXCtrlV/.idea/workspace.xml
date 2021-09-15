@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df858163-a20c-42a3-9a35-cbc388e5c270" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CrtlXCtrlV/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CrtlXCtrlV/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +70,7 @@
       <workItem from="1631310029187" duration="11511000" />
       <workItem from="1631383122083" duration="4093000" />
       <workItem from="1631447311950" duration="7286000" />
-      <workItem from="1631531666052" duration="7226000" />
+      <workItem from="1631531666052" duration="7927000" />
     </task>
     <servers />
   </component>

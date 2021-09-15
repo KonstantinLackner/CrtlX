@@ -36,11 +36,15 @@ namespace DefaultNamespace
             
             modeIndicator = GameObject.Find("ModeUI").GetComponent<Image>();
             
-            InitLevel("You walk over the burning bridge");
+            InitLevel("You walk over the burning bridge", 0, 0);
         }
 
-        private void InitLevel(String sentence)
+        private void InitLevel(String sentence, int cutCount, int wordEndingCount)
         {
+            /*
+             * Buttons for cut and ending operations have to be initialised here.
+             */
+            
             String[] wordArray = sentence.Split(' ');
             
             GameObject baseWordGameObject = InitBaseWordGameObject();
