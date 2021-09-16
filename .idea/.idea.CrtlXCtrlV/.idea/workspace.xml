@@ -43,10 +43,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3736">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="3736" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -70,7 +70,8 @@
       <workItem from="1631310029187" duration="11511000" />
       <workItem from="1631383122083" duration="4093000" />
       <workItem from="1631447311950" duration="7286000" />
-      <workItem from="1631531666052" duration="7927000" />
+      <workItem from="1631531666052" duration="8527000" />
+      <workItem from="1631727254128" duration="2777000" />
     </task>
     <servers />
   </component>
@@ -97,23 +98,6 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/WordOperationsManager.cs</url>
-          <line>23</line>
-          <properties documentPath="C:\Laptop2\Uni\7.Semester\CrtlXCtrlV\Assets\Scripts\WordOperationsManager.cs" initialLine="23" containingFunctionPresentation="method 'OnDrop'">
-            <startOffsets>
-              <option value="580" />
-            </startOffsets>
-            <endOffsets>
-              <option value="614" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
         <watch expression="new System.Collections.Generic.ICollectionDebugView&lt;UnityEngine.GameObject&gt;(this.wordOperationsManager.wordSlots).Items[0].gameObject" />

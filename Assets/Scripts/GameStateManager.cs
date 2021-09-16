@@ -11,6 +11,7 @@ namespace DefaultNamespace
         Cut,
         ChangeEnding
     }
+
     public class GameStateManager : MonoBehaviour
     {
         private Level currentLevel;
@@ -27,45 +28,63 @@ namespace DefaultNamespace
         public Sprite DRAGOPERATOR;
         public Sprite CUTOPERATOR;
         public Sprite WORDCHANGEOPERATOR;
-        
+
         private void Awake()
         {
             Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
-            
+
             operationMode = OperationMode.Drag;
-            
+
             modeIndicator = GameObject.Find("ModeUI").GetComponent<Image>();
-            
-            InitLevel("You walk over the burning bridge", 0, 0);
+
+            InitLevel("You walk over the burning bridge", 3, 1);
         }
 
         private void InitLevel(String sentence, int cutCount, int wordEndingCount)
         {
             /*
-             * Buttons for cut and ending operations have to be initialised here.
+             * Buttons
              */
-            
+            GameObject baseCutButton = GameObject.Find("CutButton");
+            GameObject baseWordEndingButton = GameObject.Find("ChangeWordEndingButton");
+            Vector3 currentPointButtons = new Vector3((cutCount + wordEndingCount) / 2f * -200f + 100f, -400f, 0f);
+            for (int i = 0; i < cutCount; i++)
+            {
+                GameObject cutButton = Instantiate(baseCutButton, currentPointButtons, Quaternion.identity);
+                cutButton.transform.SetParent(canvas.transform, false);
+                currentPointButtons += new Vector3(200f, 0f, 0f);
+            }
+
+            for (int i = 0; i < wordEndingCount; i++)
+            {
+                GameObject wordEndingButton = Instantiate(baseWordEndingButton, currentPointButtons, Quaternion.identity);
+                wordEndingButton.transform.SetParent(canvas.transform, false);
+                currentPointButtons += new Vector3(200f, 0f, 0f);
+            }
+
+            /*
+             * Words
+             */
             String[] wordArray = sentence.Split(' ');
-            
+
             GameObject baseWordGameObject = InitBaseWordGameObject();
 
             float wordCount = wordArray.Length;
             // Start -100 * wordCount/2 + 50f to the left of the centre so every word gets 100 and the middle word is centred
-            Vector3 currentPoint = new Vector3(wordCount / 2f * -200f + 100f , 0f, 0f);
+            Vector3 currentPoint = new Vector3(wordCount / 2f * -200f + 100f, 0f, 0f);
 
             words = new LinkedList<GameObject>();
             placementPositions = new LinkedList<Vector3>();
 
             foreach (String word in wordArray)
             {
-                // Problem rn is that the type of the words is GameObject not Word. No idea how to make sth. Type Word.
                 GameObject wordGameObject = Instantiate(baseWordGameObject, currentPoint, Quaternion.identity);
-                
+
                 // Can't use fourth parameter for parent as parent needs to be set with worldPositionStays == false
                 wordGameObject.transform.SetParent(canvas.transform, false);
-                
+
                 wordGameObject.GetComponent<Text>().text = word;
-                
+
                 wordGameObject.GetComponent<Word>().canvas = canvas;
 
                 wordGameObject.GetComponent<ContentSizeFitter>().horizontalFit =
@@ -82,11 +101,16 @@ namespace DefaultNamespace
                 currentPoint += new Vector3(200f, 0, 0);
             }
 
+            /*
+             * Cleanup of base GameObjects
+             */
             Destroy(baseWordGameObject);
+            Destroy(baseCutButton);
+            Destroy(baseWordEndingButton);
             Debug.Log("GameStateManager ");
             printList(words);
         }
-        
+
         private GameObject InitBaseWordGameObject()
         {
             GameObject baseWordGameObject = new GameObject("BaseWord");
@@ -106,7 +130,7 @@ namespace DefaultNamespace
 
             return baseWordGameObject;
         }
-        
+
         private void printList(LinkedList<GameObject> words)
         {
             String print = "";
@@ -114,9 +138,10 @@ namespace DefaultNamespace
             {
                 print += " " + word.name;
             }
+
             Debug.Log(print);
         }
-        
+
         public void AlignWords()
         {
             /*
@@ -125,14 +150,14 @@ namespace DefaultNamespace
             placementPositions = new LinkedList<Vector3>();
             float wordCount = words.Count;
             // Start -100 * wordCount/2 + 50f to the left of the centre so every word gets 100 and the middle word is centred
-            Vector3 currentPoint = new Vector3(wordCount / 2f * -200f + 100f , 0f, 0f);
+            Vector3 currentPoint = new Vector3(wordCount / 2f * -200f + 100f, 0f, 0f);
             for (int i = 0; i < wordCount; i++)
             {
                 placementPositions.AddLast(currentPoint);
 
                 currentPoint += new Vector3(200f, 0, 0);
             }
-            
+
             Vector3[] placementPositionsCopy = new Vector3[placementPositions.Count];
             placementPositions.CopyTo(placementPositionsCopy, 0);
             int index = 0;
@@ -152,13 +177,13 @@ namespace DefaultNamespace
                     modeIndicator.color = Color.black;
                     operationMode = OperationMode.Drag;
                     break;
-                
+
                 case OperationMode.Cut:
                     modeIndicator.sprite = CUTOPERATOR;
                     modeIndicator.color = Color.red;
                     operationMode = OperationMode.Cut;
                     break;
-                
+
                 case OperationMode.ChangeEnding:
                     modeIndicator.sprite = WORDCHANGEOPERATOR;
                     modeIndicator.color = Color.red;
