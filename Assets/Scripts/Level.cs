@@ -9,7 +9,7 @@ namespace DefaultNamespace
 
         private void tryVariation(String potentialVariation)
         {
-            if (sentence.CheckIfStringIsVariation(potentialVariation))
+            if (sentence.CheckIfStringIsVariation(potentialVariation) != null)
             {
                 Level nextLevel = sentence.FetchRespectiveLevel(potentialVariation);
             }

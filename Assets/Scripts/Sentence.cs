@@ -11,20 +11,20 @@ public class Sentence
     {
         this.original = original;
     }
-    public bool CheckIfStringIsVariation(String potentialVariation)
+    public Variation CheckIfStringIsVariation(String potentialVariation)
     {
-        bool found = false;
+        Variation returnVariation = null;
         
         foreach (Variation variation in variations)
         {
             if (variation.sentence.Equals(potentialVariation))
             {
-                found = true;
+                returnVariation = variation;
                 break;
             }
         }
 
-        return found;
+        return returnVariation;
     }
 
     /**

@@ -18,8 +18,9 @@ namespace DefaultNamespace
 
         public OperationMode operationMode;
         public LinkedList<Vector3> placementPositions { get; set; }
+        public Sentence sentence { get; set; }
         public LinkedList<GameObject> words { get; set; }
-
+        public String currentPotentialVariation { get; set; }
         public GameObject wordEndingChangeWord { get; set; }
 
         // References
@@ -31,20 +32,29 @@ namespace DefaultNamespace
 
         private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
+            
             Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
 
             operationMode = OperationMode.Drag;
 
             modeIndicator = GameObject.Find("ModeUI").GetComponent<Image>();
 
-            InitLevel("You walk over the burning bridge", 3, 1);
+            // TODO: This is bullshit and has to be changed later on
+            Sentence test = new Sentence("You walk over the burning bridge");
+            sentence = test;
+            Variation testVariation = new Variation(new Level(), "You burn the bridge", "A troll shows up and is like wtf");
+            LinkedList<Variation> variations = new LinkedList<Variation>();
+            variations.AddLast(testVariation);
+            test.variations = variations;
+            InitLevel(test, 3, 1);
         }
 
-        private void InitLevel(String sentence, int cutCount, int wordEndingCount)
+        private void InitLevel(Sentence sentence, int cutCount, int wordEndingCount)
         {
             /*
              * Buttons
-             */
+            */
             GameObject baseCutButton = GameObject.Find("CutButton");
             GameObject baseWordEndingButton = GameObject.Find("ChangeWordEndingButton");
             Vector3 currentPointButtons = new Vector3((cutCount + wordEndingCount) / 2f * -200f + 100f, -400f, 0f);
@@ -61,11 +71,15 @@ namespace DefaultNamespace
                 wordEndingButton.transform.SetParent(canvas.transform, false);
                 currentPointButtons += new Vector3(200f, 0f, 0f);
             }
+            
+            // Make validateButton clickable again
+            GameObject.Find("ValidateButton").GetComponent<Image>().color = Color.black;
+            GameObject.Find("ValidateButton").GetComponent<CanvasGroup>().blocksRaycasts = true;
 
             /*
              * Words
              */
-            String[] wordArray = sentence.Split(' ');
+            String[] wordArray = sentence.original.Split(' ');
 
             GameObject baseWordGameObject = InitBaseWordGameObject();
 
@@ -100,6 +114,7 @@ namespace DefaultNamespace
 
                 currentPoint += new Vector3(200f, 0, 0);
             }
+            currentPotentialVariation = toStringList(words);
 
             /*
              * Cleanup of base GameObjects
@@ -166,6 +181,11 @@ namespace DefaultNamespace
                 word.transform.localPosition = placementPositionsCopy[index];
                 index++;
             }
+
+            currentPotentialVariation = toStringList(words);
+            // Make validateButton clickable again
+            GameObject.Find("ValidateButton").GetComponent<Image>().color = Color.black;
+            GameObject.Find("ValidateButton").GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
 
         public void changeOperationMode(OperationMode mode)
@@ -190,6 +210,18 @@ namespace DefaultNamespace
                     operationMode = OperationMode.ChangeEnding;
                     break;
             }
+        }
+
+        public String toStringList(LinkedList<GameObject> list)
+        {
+            String product = "";
+            foreach (var wordNode in list)
+            {
+                product += wordNode.GetComponent<Text>().text;
+                product += list.Last.Value == wordNode ? "":" ";
+            }
+
+            return product;
         }
     }
 }

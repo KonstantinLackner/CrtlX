@@ -37,6 +37,10 @@ namespace DefaultNamespace
             }
 
             textComponent.text = text;
+            
+            // Make validateButton clickable again
+            GameObject.Find("ValidateButton").GetComponent<Image>().color = Color.black;
+            GameObject.Find("ValidateButton").GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
     }
 }
