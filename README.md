@@ -1,4 +1,4 @@
-<h1>CrtlXCtrlV</h1>
+<h1>CrtlX</h1>
 <p>This is a very simple word editing game created as a final assignment for the lecture DIKULT 203 21H / Electronic Literature 2021 (https://www.uib.no/en/course/DIKULT203).</p>
 <p>The game tells a modular short story that can be edited by the player while reading it. Each level presents a new sentence of the story, the available operations to change the sentences are:</p>
 <ol>
