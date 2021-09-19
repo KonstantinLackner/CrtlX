@@ -16,7 +16,6 @@ namespace DefaultNamespace
         private void Awake()
         {
             gameStateManager = GetComponent<GameStateManager>();
-            words = gameStateManager.words;
         }
 
         public void OnDrop(PointerEventData eventData)
@@ -30,6 +29,9 @@ namespace DefaultNamespace
 
         private void SortList(GameObject draggedObject, float dropPosition)
         {
+            // Can't be done in awake because GSM only fetches work on init
+            words = gameStateManager.words;
+            
             // Find the closest wordSlot
             GameObject closestWord = words.First.Value;
             float distanceToClosest = Math.Abs(words.First.Value.transform.position.x - dropPosition);

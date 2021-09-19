@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader instance;
-    public Animator transitionAnimator;
+    // public Animator transitionAnimator;
     public String answer { get; set; }
     public Sentence sentenceToGoTo { get; set; }
 
@@ -27,12 +27,12 @@ public class SceneLoader : MonoBehaviour
         /*
          * Bullshit test init
          */
-        Sentence testSentence1 = new Sentence("This does not lead to tS2", 1, 1);
-        Sentence testSentence2 = new Sentence("This is tS2",2, 1);
-        Sentence testSentence3 = new Sentence("This is tS3", 0, 0);
+        Sentence testSentence1 = new Sentence("you walk over the burning bridge", 2, 1);
+        Sentence testSentence2 = new Sentence("you kill the troll with your sword",2, 1);
+        Sentence testSentence3 = new Sentence("you ignore the troll", 0, 1);
             
-        Variation testVariationS1 = new Variation("This does lead to tS2", testSentence2, "This is the story1");
-        Variation testVariationS2 = new Variation("This does not lead to tS2", testSentence3, "This is the story2");
+        Variation testVariationS1 = new Variation("you burn the bridge", testSentence2, "A troll rises from the ashes.'You burn me house!' He spits at you as he shouts");
+        Variation testVariationS2 = new Variation("you walk over the bridge", testSentence3, "As you walk over the bridge, a troll happily waves at you");
             
         LinkedList<Variation> variations = new LinkedList<Variation>();
         variations.AddLast(testVariationS1);
@@ -52,11 +52,10 @@ public class SceneLoader : MonoBehaviour
     
     IEnumerator LoadStoryLevelCoroutine()
     {
-        // Maybe make transition time dependent on sentence length
 
-        // transitionAnimator.SetTrigger("Start");
+        // transitionAnimator.SetTrigger("StartFade");
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.1f);
 
         SceneManager.LoadScene("Scenes/Story");
     }
@@ -68,11 +67,10 @@ public class SceneLoader : MonoBehaviour
     
     IEnumerator LoadInputLevelCoroutine()
     {
-        // Maybe make transition time dependent on sentence length
 
-        // transitionAnimator.SetTrigger("Start");
+        // transitionAnimator.SetTrigger("StartFade");
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.1f);
 
         SceneManager.LoadScene("Scenes/Input");
     }
