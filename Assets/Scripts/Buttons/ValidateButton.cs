@@ -24,7 +24,7 @@ namespace DefaultNamespace
         public void OnPointerDown(PointerEventData eventData)
         {
             variationString = gameStateManager.currentPotentialVariation;
-            sentence = gameStateManager.sentence;
+            sentence = gameStateManager.currentSentence;
             
             Variation variation = sentence.CheckIfStringIsVariation(variationString);
             if (variation != null)

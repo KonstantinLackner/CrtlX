@@ -6,12 +6,12 @@ namespace DefaultNamespace
     {
         public String sentence { get; }
         public String answer { get; }
-        public Level leadsTo { get; }
+        public Sentence leadsTo { get; }
 
-        public Variation(Level leadsTo, String sentence, String answer)
+        public Variation(String sentence, Sentence leadsTo, String answer)
         {
-            this.leadsTo = leadsTo;
             this.sentence = sentence;
+            this.leadsTo = leadsTo;
             this.answer = answer;
         }
     }

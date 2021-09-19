@@ -14,14 +14,14 @@ namespace DefaultNamespace
 
     public class GameStateManager : MonoBehaviour
     {
-        private Level currentLevel;
-
+        public static GameStateManager instance; // SINGLETON
+        
         public OperationMode operationMode;
         public LinkedList<Vector3> placementPositions { get; set; }
-        public Sentence sentence { get; set; }
         public LinkedList<GameObject> words { get; set; }
         public String currentPotentialVariation { get; set; }
         public GameObject wordEndingChangeWord { get; set; }
+        public Sentence currentSentence { get; set; }
 
         // References
         public Canvas canvas;
@@ -32,26 +32,34 @@ namespace DefaultNamespace
 
         private void Awake()
         {
-            DontDestroyOnLoad(gameObject);
+            /*
+             * Singleton pattern
+             */
+            if (instance == null)
+            {
+                DontDestroyOnLoad(gameObject);
+                instance = this;
+            }
+            else if (instance != this)
+            {
+                Destroy(gameObject);
+            }
             
+            /*
+             * State/Mode init
+             */
             Cursor.lockState = CursorLockMode.Confined; // keep confined in the game window
 
             operationMode = OperationMode.Drag;
 
             modeIndicator = GameObject.Find("ModeUI").GetComponent<Image>();
-
-            // TODO: This is bullshit and has to be changed later on
-            Sentence test = new Sentence("You walk over the burning bridge");
-            sentence = test;
-            Variation testVariation = new Variation(new Level(), "You burn the bridge", "A troll shows up and is like wtf");
-            LinkedList<Variation> variations = new LinkedList<Variation>();
-            variations.AddLast(testVariation);
-            test.variations = variations;
-            InitLevel(test, 3, 1);
         }
 
-        private void InitLevel(Sentence sentence, int cutCount, int wordEndingCount)
+        public void InitLevel(Sentence sentence)
         {
+            currentSentence = sentence;
+            int cutCount = sentence.cutCount;
+            int wordEndingCount = sentence.wordEndingCount;
             /*
              * Buttons
             */
