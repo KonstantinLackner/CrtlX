@@ -2,46 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df858163-a20c-42a3-9a35-cbc388e5c270" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buttons/BackButton.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buttons/CutButton.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buttons/ValidateButton.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Buttons/WordEndingChangeButton.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/Sentence.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/Variation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Elements/Word.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/GameStateManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/WordEndingChange.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/WordOperationsManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SceneLoader/InputSceneLoader.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SceneLoader/SceneLoader.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SceneLoader/StorySceneLoader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CrtlXCtrlV/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CrtlXCtrlV/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Input.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Input.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Story.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Story.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CutButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CutButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sentence.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sentence.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StorySceneManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StorySceneManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ValidateButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ValidateButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Variation.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Variation.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Word.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Word.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WordEndingChange.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WordEndingChange.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WordEndingChangeButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WordEndingChangeButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WordOperationsManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WordOperationsManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager/WordOperationsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager/WordOperationsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneLoader/SceneLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneLoader/SceneLoader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +29,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3502052" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.25937185" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -112,7 +76,7 @@
       <workItem from="1631383122083" duration="4093000" />
       <workItem from="1631447311950" duration="7286000" />
       <workItem from="1631531666052" duration="8527000" />
-      <workItem from="1631727254128" duration="27367000" />
+      <workItem from="1631727254128" duration="31506000" />
     </task>
     <servers />
   </component>
